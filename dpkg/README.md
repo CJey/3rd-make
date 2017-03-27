@@ -1,0 +1,5 @@
+## Done
+
+* mosquitto
+* nginx
+* php

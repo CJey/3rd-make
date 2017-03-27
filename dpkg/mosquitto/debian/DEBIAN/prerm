@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+
+rm -f /usr/local/bin/mosquitto_pub
+rm -f /usr/local/bin/mosquitto_sub
+
+case "$1" in
+  remove|remove-in-favour|deconfigure|deconfigure-in-favour)
+    if [ -x /etc/init.d/mosquitto ]; then
+      invoke-rc.d mosquitto stop || exit $?
+      update-rc.d -f mosquitto remove
+    fi  
+    ;;  
+
+  upgrade|failed-upgrade)
+    ;;  
+
+  *)  
+    echo "prerm called with unknown argument \`$1'" >&2
+    exit 1
+    ;;  
+esac
+
+
+
+exit 0

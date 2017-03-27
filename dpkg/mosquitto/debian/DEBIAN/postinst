@@ -1,0 +1,36 @@
+#!/bin/sh
+
+set -e
+
+rm -f /usr/local/bin/mosquitto_pub
+rm -f /usr/local/bin/mosquitto_sub
+
+ln -s /opt/like/mosquitto/bin/mosquitto_pub /usr/local/bin/
+ln -s /opt/like/mosquitto/bin/mosquitto_sub /usr/local/bin/
+
+case "$1" in
+  abort-upgrade|abort-remove|abort-deconfigure|configure)
+    ;;  
+
+  *)  
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+    ;;  
+esac
+
+if [ -x /etc/init.d/mosquitto ]; then
+  if [ -s /run/like/mosquitto.pid ] && pidof /opt/like/mosquitto/sbin/mosquitto >/dev/null; then
+    if ! invoke-rc.d mosquitto stop; then
+      PFS_PID=`cat /run/like/mosquitto.pid`
+      kill -s KILL "$PFS_PID"
+    fi  
+    invoke-rc.d mosquitto start || exit $?
+  else
+    invoke-rc.d mosquitto start || exit $?
+    update-rc.d -f mosquitto defaults
+  fi  
+fi
+
+
+
+exit 0

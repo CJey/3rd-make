@@ -1,0 +1,11 @@
+/opt/like/logs/mosquitto/*.log {
+	rotate 12
+	weekly
+	missingok
+	notifempty
+	compress
+	delaycompress
+	postrotate
+		kill -USR1 $(cat "/run/like/mosquitto.pid")
+	endscript
+}

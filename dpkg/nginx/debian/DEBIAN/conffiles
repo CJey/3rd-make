@@ -1,0 +1,7 @@
+/opt/like/nginx/conf/fastcgi_params
+/opt/like/nginx/conf/koi-utf
+/opt/like/nginx/conf/koi-win
+/opt/like/nginx/conf/mime.types
+/opt/like/nginx/conf/scgi_params
+/opt/like/nginx/conf/uwsgi_params
+/opt/like/nginx/conf/win-utf

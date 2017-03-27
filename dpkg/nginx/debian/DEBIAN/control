@@ -1,0 +1,33 @@
+Package: like-nginx
+Version:
+GitHash:
+Architecture: amd64
+Maintainer: CJey Hou <cjey.hou@paadoo.com>
+Installed-Size:
+Depends: lsb-base, libpcre3, libssl1.0.0, zlib1g
+Conflicts: nginx, nginx-common, nginx-full, nginx-core, nginx-light, nginx-extras
+Section: httpd
+Priority: optional
+Homepage: http://nginx.org/
+Description: nginx web server tailored for LikeIT
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers. 
+ .
+ This package provides a version of nginx with the complete set of
+ standard modules included (but omitting some of those included in
+ nginx-extra).
+ .
+ STANDARD HTTP MODULES: Core, Access, Auth Basic, Auto Index, Browser, Empty
+ GIF, FastCGI, Geo, Limit Connections, Limit Requests, Map, Memcached, Proxy,
+ Referer, Rewrite, SCGI, Split Clients, UWSGI.
+ .
+ OPTIONAL HTTP MODULES: Addition, Auth Request, Charset, WebDAV, GeoIP, Gunzip,
+ Gzip, Gzip Precompression, Headers, Image Filter, Index, Log, Real IP, Spdy,
+ SSI, SSL, Stream, Stub Status, Substitution, Thread Pool, Upstream, User ID,
+ XSLT.
+ .
+ MAIL MODULES: Mail Core, Auth HTTP, Proxy, SSL, IMAP, POP3, SMTP.
+ .
+ THIRD PARTY MODULES: Auth PAM, DAV Ext, Echo, HTTP Substitutions, Upstream
+ Fair Queue.

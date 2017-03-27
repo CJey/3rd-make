@@ -1,0 +1,25 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+  remove|remove-in-favour|deconfigure|deconfigure-in-favour)
+    if [ -x /etc/init.d/php-fpm ]; then
+      invoke-rc.d php-fpm stop || exit $?
+      update-rc.d -f php-fpm remove
+    fi  
+    ;;  
+
+  upgrade|failed-upgrade)
+    ;;  
+
+  *)  
+    echo "prerm called with unknown argument \`$1'" >&2
+    exit 1
+    ;;  
+esac
+
+rm -rf /bin/php
+
+
+
+exit 0

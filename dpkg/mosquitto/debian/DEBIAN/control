@@ -1,0 +1,17 @@
+Package: like-mosquitto
+Version:
+GitHash:
+Architecture: amd64
+Maintainer: CJey Hou <cjey.hou@paadoo.com>
+Installed-Size:
+Depends: lsb-base
+Section: mqtt
+Priority: optional
+Homepage: http://mosquitto.org/
+Description: MQTT broker tailored for LikeIT
+ Mosquitto is an open source (EPL/EDL licensed) message broker that 
+ implements the MQTT protocol versions 3.1 and 3.1.1. MQTT provides
+ a lightweight method of carrying out messaging using a publish /
+ subscribe model. This makes it suitable for "Internet of Things" 
+ messaging such as with low power sensors or mobile devices such as
+ phones, embedded computers or microcontrollers like the Arduino.

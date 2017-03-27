@@ -1,0 +1,25 @@
+Package: like-php
+Version:
+GitHash:
+Architecture: amd64
+Maintainer: CJey Hou <cjey.hou@paadoo.com>
+Installed-Size:
+Depends: lsb-base, zlib1g, libxml2, libssl1.0.0, libgd3, libicu52, libpcre3, mime-support, libfreetype6, libmcrypt4
+Conflicts: php, php5-common, php5-cli, php5-fpm
+Section: php
+Priority: optional
+Homepage: http://www.php.net/
+Description: php tailored for LikeIT
+ This package provides the Fast Process Manager interpreter that runs
+ as a daemon and receives Fast/CGI requests.  Note that MOST Apache users
+ probably want the libapache2-mod-php5 package.
+ .
+ The following extensions are built in: bcmath bz2 calendar Core ctype date
+ dba dom ereg exif fileinfo filter ftp gettext hash iconv libxml mbstring
+ mhash openssl pcre Phar posix Reflection session shmop SimpleXML soap
+ sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx xml xmlreader
+ xmlwriter zip zlib.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.

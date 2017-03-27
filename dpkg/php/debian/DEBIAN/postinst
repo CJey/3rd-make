@@ -1,0 +1,39 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+  abort-upgrade|abort-remove|abort-deconfigure|configure)
+    ;;
+
+  *)
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+if [ -x /etc/init.d/php-fpm ]; then
+  if [ -f /run/like/php-fpm.pid ] && pidof /opt/like/php/sbin/php-fpm >/dev/null; then
+    FPM_PID=`cat /run/like/php-fpm.pid`
+    if kill -s USR2 $FPM_PID 2>/dev/null; then
+      while [ ! -s /run/like/php-fpm.pid ]; do
+        cnt=`expr $cnt + 1`
+        if [ $cnt -gt 10 ]; then
+          kill -s KILL $FPM_PID
+          invoke-rc.d php-fpm start
+          exit 0
+        fi
+        sleep 1
+      done
+    fi
+  else
+    invoke-rc.d php-fpm start || exit $?
+    update-rc.d -f php-fpm defaults
+  fi
+fi
+
+rm -rf /bin/php
+ln -s /opt/like/php/bin/php /bin/php
+
+
+
+exit 0
